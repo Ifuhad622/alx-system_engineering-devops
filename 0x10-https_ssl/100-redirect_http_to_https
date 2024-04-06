@@ -47,5 +47,5 @@ frontend ifuhad-tech-frontend-https
 
 backend ifuhad.tech-backend
         balance roundrobin
-        server 484993-web-01 54.236.46.92:80 check
-        server 484993-web-02 54.160.85.222:80 check
+        server 484993-web-01 54.237.41.138 check
+        server 484993-web-02 34.232.70.115 check
