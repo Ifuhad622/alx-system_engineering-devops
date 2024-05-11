@@ -1,28 +1,95 @@
-[200~0x19. Postmortem: The Great Server Fumble Fiasco  
-“We are stormed by a quantity of information, it’s hard to get people to read you.”
-Copyright: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRml5j1MRvXw7RfvbG2aW3qo2gMO-0EDBG_kg&usqp=CAU
-Ah, the melodious hum of servers, the crisp clickety-clack of keyboards, and the sweet scent of freshly brewed coffee. These are the hallmarks of a typical day in the life of a tech aficionado. But what happens when chaos descends upon this tranquil scene? Well, my friends, let me regale you with the tale of “The Great Server Fumble Fiasco.”
-Issue Summary:
-· Duration: This calamitous comedy of errors unfolded on April 16, 2024, starting at the ungodly hour of 00:00 AM and stretching its mischievous claws over weeks
-· Impact: Picture this: servers trembling in fear, load balancers whimpering in confusion, and users staring blankly at their screens, wondering if the digital apocalypse has finally arrived. Yes, dear reader, the access lock-out left our beloved web-01, web-02 servers, and ld-01 load balancer trembling in the cold embrace of silence.
-· Root Cause: In a plot twist worthy of a Shakespearean tragedy, the culprit behind this debacle was none other than a well-meaning but bumbling intern who accidentally hit the “self-destruct” button while attempting to brew a fresh pot of coffee. RIP SSH configuration keys.
-Timeline:
-https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4t9VUuH_Zo_gfMAWeVOiKo_4IguffROyfVA&usqp=CAU
-· April 16, 2024
-· 00:00 AM WAT: The silence of the night is shattered by the dreaded ping of the alert system, signaling the beginning of our misadventure.
-· 1:05 AM WAT: Bleary-eyed and befuddled, the intern frantically summons ALX Africa, who stumble into action with all the grace of a herd of caffeinated sloths.
-· 1:30 AM WAT: Amidst the chaos, our hero Alfred Tuva emerges from the shadows, armed with a trusty keyboard and a steely resolve to conquer the digital demons.
-· 2:00 AM WAT: With the finesse of a seasoned warrior, Alfred plunges into the depths of the server room, determined to uncover the elusive root cause.
-· 3:30 AM WAT: Eureka! The cause of our woes is revealed: the infamous self-destruct button, hidden in plain sight amidst the coffee machine’s array of buttons and knobs.
-· 5:00 AM WAT: Armed with newfound knowledge and copious amounts of caffeine, Alfred embarks on a daring mission to reconfigure the SSH keys and restore order to the chaos.
-· 11:00 AM WAT: Victory! The servers awaken from their digital slumber, blinking in the harsh light of dawn as access is restored, and peace once again reigns supreme.
-Root Cause and Resolution:
-https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLhQR36m3VS3Kiox9GPFpu2fr8zr62VdNZTPI7HdAGsrh6ny3j0w2NCfOY56NjEdUq9Q&usqp=CAU
-· Root Cause: The accidental activation of the self-destruct button by our dear intern led to the obliteration of the SSH configuration keys, plunging our servers into darkness.
-· Resolution: Through the heroic efforts of Alfred Tuva and ALX Africa, the SSH keys were reconfigured, and access was restored, banishing the specter of the access lock-out once and for all.
-Tasks for Addressing the Issue:
-· Intern Bootcamp: Implementing a rigorous training program to ensure that future interns are well-versed in the intricacies of coffee machine operation and the perils of hidden self-destruct buttons.
-· Emergency Coffee Fund: Establishing a dedicated fund to replenish our caffeine reserves and keep our heroes fuelled and ready for action during future crises.
-In conclusion, dear readers, remember: in the ever-chaotic world of technology, laughter is often the best medicine. So, as we bid adieu to “The Great Server Fumble Fiasco,” let us give a round of applaud to Alfred Tuva and ALX Africa, for their tremendous efforts working effortlessly to keep the server to it’s normal state, the unsung heroes of our digital realm. Cheers to them, and may their adventures continue to entertain and inspire us all.
+0x19. Postmortem
+DevOps
+SysAdmin
+ Weight: 1
+ Project will start May 6, 2024 3:00 AM, must end by May 13, 2024 3:00 AM
+ Manual QA review must be done (request it when you are done with the project)
+Concepts
+For this project, we expect you to look at this concept:
+
+On-call
+Background Context
+
+
+Any software system will eventually fail, and that failure can come stem from a wide range of possible factors: bugs, traffic spikes, security issues, hardware failures, natural disasters, human error… Failing is normal and failing is actually a great opportunity to learn and improve. Any great Software Engineer must learn from his/her mistakes to make sure that they won’t happen again. Failing is fine, but failing twice because of the same issue is not.
+
+A postmortem is a tool widely used in the tech industry. After any outage, the team(s) in charge of the system will write a summary that has 2 main goals:
+
+To provide the rest of the company’s employees easy access to information detailing the cause of the outage. Often outages can have a huge impact on a company, so managers and executives have to understand what happened and how it will impact their work.
+And to ensure that the root cause(s) of the outage has been discovered and that measures are taken to make sure it will be fixed.
+Resources
+Read or watch:
+
+Incident Report, also referred to as a Postmortem
+The importance of an incident postmortem process
+What is an Incident Postmortem?
+More Info
+Manual QA Review
+It is your responsibility to request a review for your postmortem from a peer before the project’s deadline. If no peers have been reviewed, you should request a review from a TA or staff member.
+
+Tasks
+0. My first postmortem
+mandatory
+
+
+Using one of the web stack debugging project issue or an outage you have personally face, write a postmortem. Most of you will never have faced an outage, so just get creative and invent your own :)
+
+Requirements:
+
+Issue Summary (that is often what executives will read) must contain:
+duration of the outage with start and end times (including timezone)
+what was the impact (what service was down/slow? What were user experiencing? How many % of the users were affected?)
+what was the root cause
+Timeline (format bullet point, format: time - keep it short, 1 or 2 sentences) must contain:
+
+when was the issue detected
+how was the issue detected (monitoring alert, an engineer noticed something, a customer complained…)
+actions taken (what parts of the system were investigated, what were the assumption on the root cause of the issue)
+misleading investigation/debugging paths that were taken
+which team/individuals was the incident escalated to
+how the incident was resolved
+Root cause and resolution must contain:
+
+explain in detail what was causing the issue
+explain in detail how the issue was fixed
+Corrective and preventative measures must contain:
+
+what are the things that can be improved/fixed (broadly speaking)
+a list of tasks to address the issue (be very specific, like a TODO, example: patch Nginx server, add monitoring on server memory…)
+Be brief and straight to the point, between 400 to 600 words
+
+While postmortem format can vary, stick to this one so that you can get properly reviewed by your peers.
+
+Please, remember that these blogs must be written in English to further your technical ability in a variety of settings.
+
+Add URLs here:
+ 
+https://docs.google.com/document/d/1Y_mfMua2TEj3Iuvio40U4SF1lnqqwzoXH7iV4fp5Xkc/edit?usp=sharing
+
+Repo:
+
+GitHub repository: alx-system_engineering-devops
+Directory: 0x19-postmortem
+File: README.md
+
+1. Make people want to read your postmortem
+#advanced
+We are constantly stormed by a quantity of information, it’s tough to get people to read you.
+
+Make your post-mortem attractive by adding humour, a pretty diagram or anything that would catch your audience attention.
+
+Please, remember that these blogs must be written in English to further your technical ability in a variety of settings.
+
+Add URLs here:
+ 
+https://docs.google.com/document/d/1Y_mfMua2TEj3Iuvio40U4SF1lnqqwzoXH7iV4fp5Xkc/edit?usp=sharing
+
+Repo:
+
+GitHub repository: alx-system_engineering-devops
+Directory: 0x19-postmortem
+File: README.md
+
+https://intranet.alxswe.com/corrections/32249089/correct	
 
 
